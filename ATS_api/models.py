@@ -1,3 +1,4 @@
+from email.policy import default
 from operator import iadd
 from django.db import models
 
@@ -10,6 +11,9 @@ class User(models.Model):
     last_name = models.CharField(max_length=30)
     email = models.CharField(max_length=30)
     password = models.CharField(max_length=30)
+    city=models.CharField(max_length=30,default='')
+    phone=models.CharField(max_length=20,default='')
+    country=models.CharField(max_length=20,default='')
 
     def __str__(self):
         return self.task
@@ -76,7 +80,7 @@ class applicant_cv(models.Model):
     phone=models.CharField(max_length=30)
     phone2=models.CharField(max_length=30,null=True)
     training_certification = models.CharField(max_length=100)
-    applicant_id = models.ForeignKey(
+    applicant_cv_id = models.ForeignKey(
         'user',
          on_delete=models.CASCADE,
          )
@@ -132,6 +136,7 @@ class Job(models.Model):
         'company',
          on_delete=models.CASCADE,
          )
+    file=models.CharField(max_length=1000,default='')
     def __str__(self):
         return self.task
   

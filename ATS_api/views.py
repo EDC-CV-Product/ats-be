@@ -1,3 +1,4 @@
+from urllib import response
 from django.shortcuts import render
 
 # Create your views here.
@@ -72,4 +73,3 @@ class candidate_EvaluationViewSet(viewsets.ModelViewSet):
 class Job_Discription_DocumentViewSet(viewsets.ModelViewSet):
    queryset = Job_Description_Document.objects.all()
    serializer_class = Job_Discription_DocumentSerializer
-

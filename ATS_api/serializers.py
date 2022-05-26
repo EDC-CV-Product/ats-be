@@ -4,7 +4,7 @@ from ATS_api.models import User,User_Role,Role,Skill_Set,job_platforms,Company,a
 class UserSerializer(serializers.ModelSerializer):
    class Meta:
        model = User
-       fields = ('id', 'first_name', 'middle_name', 'last_name','email','password')
+       fields = ('id', 'first_name', 'middle_name', 'last_name','email','password','phone','city','country')
 
 
 class User_RoleSerializer(serializers.ModelSerializer):
@@ -54,7 +54,7 @@ class EducationSerializer(serializers.ModelSerializer):
 class JobSerializer(serializers.ModelSerializer):
    class Meta:
        model = Job
-       fields = ('id', 'code','name','description','date_published','job_start_date','job_deadline','number_of_vacancies','job_category_id','job_postion','job_platform_id','orgnization_id')
+       fields = ('id', 'code','name','description','date_published','job_start_date','job_deadline','number_of_vacancies','job_category_id','job_postion','job_platform_id','orgnization_id','file')
 
 
 class job_categorySerializer(serializers.ModelSerializer):
