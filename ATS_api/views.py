@@ -1,10 +1,43 @@
 from django.shortcuts import render
-
+from . models import UploadPdf, Job_discUpload
+from . forms import ResumeUpload, Job_discUpload
+import pandas as pd
+import sys
+import spacy
+from django.shortcuts import render, redirect
+from django.http import HttpResponse, HttpResponseRedirect
+from django.views.generic import ListView, DetailView
 # Create your views here.
 from rest_framework import viewsets
 
 from ATS_api.serializers import UserSerializer, User_RoleSerializer,RoleSerializer,Skill_SetSerializer,job_platformsSerializer,CompanySerializer,applicant_cvSerializer,ExperianceSerializer,EducationSerializer,JobSerializer,job_categorySerializer,CandidateSerializer,applicant_DocumentSerializer,candidate_EvaluationSerializer,Job_Discription_DocumentSerializer
 from ATS_api.models import User, User_Role,Role,Skill_Set, job_category,job_platforms,Company,applicant_cv,Experience,Education,Job,job_category,Candidate,Applicant_Document,candidate_Evaluation,Job_Description_Document
+
+
+def upload_pdf(request):
+    if request.method == "POST":
+        form = ResumeUpload(request.POST, request.FILES)
+        files = request.FILES.getlist('resumes')
+        if form.is_valid():
+            for f in files:
+                file_instance = UploadPdf(resumes=f)
+                file_instance.save()
+        pec.main()
+        return redirect('upload_resume')
+    else:
+        form = ResumeUpload()
+    return render(request, '.html', {'form': form})
+
+def upload_Job_disc(request):
+    if request.method == "POST":
+        form = Job_discUpload(request.POST, request.FILES)
+        if form.is_valid():
+            form.save()
+    else:
+        form = Job_discUpload()
+    data = pm.main()
+    return render(request, '.html', index=False, render_links=True, escape=False)
+
 
 class UserViewSet(viewsets.ModelViewSet):
    queryset = User.objects.all()

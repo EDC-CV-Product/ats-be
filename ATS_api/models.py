@@ -207,3 +207,13 @@ class Job_Description_Document(models.Model):
     def __str__(self):
         return self.task
 
+
+class UploadPdf(models.Model):
+#     jobrole = models.CharField(max_length=100)
+    resumes = models.FileField(upload_to='resumes/', blank=True, null=True)
+        
+#     def __str__(self):
+#         return self.jobrole
+    
+class Job_discUpload(models.Model):
+    keyword = models.FileField(upload_to='Job_disc/', blank=True, null=True)
