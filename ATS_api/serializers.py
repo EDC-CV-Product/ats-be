@@ -54,7 +54,7 @@ class EducationSerializer(serializers.ModelSerializer):
 class JobSerializer(serializers.ModelSerializer):
    class Meta:
        model = Job
-       fields = ('id', 'code','name','description','date_published','job_start_date','job_deadline','number_of_vacancies','job_category_id','job_postion','job_platform_id','orgnization_id','file')
+       fields = ('id', 'code','name','description','date_published','job_deadline','number_of_vacancies','job_category_id','job_postion','job_platform_id','orgnization_name','file')
 
 
 class job_categorySerializer(serializers.ModelSerializer):
