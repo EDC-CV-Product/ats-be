@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from ATS_api.models import User,User_Role,Role,Skill_Set,job_platforms,Company,applicant_cv,Experience,Education,Job,job_category,Candidate,Applicant_Document,candidate_Evaluation,Job_Description_Document
+from ATS_api.models import User,User_Role,Role,Skill_Set,job_platforms,Company,applicant_cv,Experience,Education,Job,job_category,Application,Applicant_Document,candidate_Evaluation,Job_Description_Document
 
 class UserSerializer(serializers.ModelSerializer):
    class Meta:
@@ -36,13 +36,13 @@ class CompanySerializer(serializers.ModelSerializer):
 class applicant_cvSerializer(serializers.ModelSerializer):
    class Meta:
        model = applicant_cv
-       fields = ('id', 'date_created','gender','summary','last_updated','zip_code','country','city','phone','phone2','training_certification','applicant_id')
+       fields = ('id', 'date_created','gender','summary','last_updated','zip_code','country','city','phone','phone2','training_certification','applicant_cv_id')
 
 
 class ExperianceSerializer(serializers.ModelSerializer):
    class Meta:
        model = Experience
-       fields = ('id', 'orgnization','title','begin_date','end_date','applicant_cv_id')
+       fields = ('id', 'organization','title','begin_date','end_date','applicant_cv_id')
 
 
 class EducationSerializer(serializers.ModelSerializer):
@@ -54,7 +54,7 @@ class EducationSerializer(serializers.ModelSerializer):
 class JobSerializer(serializers.ModelSerializer):
    class Meta:
        model = Job
-       fields = ('id', 'code','name','description','date_published','job_deadline','number_of_vacancies','job_category_id','job_postion','job_platform_id','orgnization_name','file')
+       fields = ('id', 'code','description','date_published','job_deadline','number_of_vacancies','job_category_id','job_position','job_platform_id','organization_name','file')
 
 
 class job_categorySerializer(serializers.ModelSerializer):
@@ -62,15 +62,15 @@ class job_categorySerializer(serializers.ModelSerializer):
        model = job_category
        fields = ('id', 'code','name','description')
 
-class CandidateSerializer(serializers.ModelSerializer):
+class ApplicationSerializer(serializers.ModelSerializer):
    class Meta:
-       model = Candidate
+       model = Application
        fields = ('id', 'date_of_appliation','job_id','applicant_cv_id','appliation_status')
 
 class applicant_DocumentSerializer(serializers.ModelSerializer):
    class Meta:
        model = Applicant_Document
-       fields = ('id', 'name','document','url','last_updated')
+       fields = ('id', 'name','document','url','last_updated','User_id')
 
 class candidate_EvaluationSerializer(serializers.ModelSerializer):
    class Meta:

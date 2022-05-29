@@ -15,8 +15,6 @@ class User(models.Model):
     phone=models.CharField(max_length=20,default='')
     country=models.CharField(max_length=20,default='')
 
-    def __str__(self):
-        return self.task
 
 class User_Role(models.Model):
     id = models.AutoField(primary_key=True)
@@ -53,17 +51,14 @@ class job_platforms(models.Model):
     id = models.AutoField(primary_key=True)
     code = models.CharField(max_length=30)
     name = models.CharField(max_length=30)
-    description= models.CharField(max_length=1000)
-
-    def __str__(self):
-        return self.task
+    description= models.CharField(max_length=1000,null=True)
+    
 
 class Company(models.Model):
     id = models.AutoField(primary_key=True)
     code = models.CharField(max_length=30)
     name = models.CharField(max_length=30)
-    description = models.CharField(max_length=1000)
-
+    description = models.CharField(max_length=1000,null=True)
     def __str__(self):
         return self.task
 
@@ -89,7 +84,7 @@ class applicant_cv(models.Model):
 
 class Experience(models.Model):
     id = models.AutoField(primary_key=True)
-    orgnization = models.CharField(max_length=30)
+    organization = models.CharField(max_length=30)
     title = models.CharField(max_length=30)
     begin_date = models.DateTimeField(max_length=30)
     end_date = models.DateTimeField(max_length=30)
@@ -117,23 +112,23 @@ class Education(models.Model):
 class Job(models.Model):
     id = models.AutoField(primary_key=True)
     code = models.CharField(max_length=30)
-    name = models.CharField(max_length=30)
+    #name = models.CharField(max_length=30)
     description = models.CharField(max_length=1000,null=True)
-    date_published = models.DateTimeField(max_length=30)
+    date_published = models.DateTimeField()
     #job_start_date = models.DateTimeField(max_length=30,null=True)
-    job_deadline = models.DateTimeField(max_length=30)
-    number_of_vacancies = models.IntegerField(unique=True)
+    job_deadline = models.DateTimeField()
+    number_of_vacancies = models.IntegerField()
     job_category_id = models.ForeignKey(
         'job_category',
          on_delete=models.CASCADE,
          )
-    job_postion = models.CharField(max_length=30)
+    job_position = models.CharField(max_length=30)
     job_platform_id = models.ForeignKey(
         'job_platforms',
          on_delete=models.CASCADE,
          )
-    orgnization_name = models.CharField(max_length=30,default='')
-    file=models.FileField(max_length=1000,default='')
+    organization_name = models.CharField(max_length=50,default='',null=True)
+    file=models.FileField()
     def __str__(self):
         return self.task
   
@@ -142,12 +137,10 @@ class job_category(models.Model):
     id = models.AutoField(primary_key=True)
     code = models.CharField(max_length=10)
     name = models.CharField(max_length=30)
-    description = models.CharField(max_length=1000)
+    description = models.CharField(max_length=1000,null=True)
 
-    def __str__(self):
-        return self.task
-
-class Candidate(models.Model):
+    
+class Application(models.Model):
     id = models.AutoField(primary_key=True)
     date_of_appliation = models.DateTimeField(max_length=30)
     job_id = models.ForeignKey(
@@ -163,20 +156,16 @@ class Candidate(models.Model):
     def __str__(self):
         return self.task
 
-    
 class Applicant_Document(models.Model):
     id = models.AutoField(primary_key=True)
     name=models.CharField(max_length=30)
-    document= models.BinaryField(max_length=100)
-    url = models.CharField(max_length=10,null=True)
+    document= models.FileField()
+    url = models.CharField(max_length=90,null=True)
     last_updated = models.DateTimeField(max_length=30)
-    application_cv_id  = models.ForeignKey(
-        'applicant_cv',
+    User_id  = models.ForeignKey(
+        'User',
          on_delete=models.CASCADE,
          )
-
-    def __str__(self):
-        return self.task
 
  
 class candidate_Evaluation(models.Model):

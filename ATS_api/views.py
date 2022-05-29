@@ -4,8 +4,8 @@ from django.shortcuts import render
 # Create your views here.
 from rest_framework import viewsets
 
-from ATS_api.serializers import UserSerializer, User_RoleSerializer,RoleSerializer,Skill_SetSerializer,job_platformsSerializer,CompanySerializer,applicant_cvSerializer,ExperianceSerializer,EducationSerializer,JobSerializer,job_categorySerializer,CandidateSerializer,applicant_DocumentSerializer,candidate_EvaluationSerializer,Job_Discription_DocumentSerializer
-from ATS_api.models import User, User_Role,Role,Skill_Set, job_category,job_platforms,Company,applicant_cv,Experience,Education,Job,job_category,Candidate,Applicant_Document,candidate_Evaluation,Job_Description_Document
+from ATS_api.serializers import UserSerializer, User_RoleSerializer,RoleSerializer,Skill_SetSerializer,job_platformsSerializer,CompanySerializer,applicant_cvSerializer,ExperianceSerializer,EducationSerializer,JobSerializer,job_categorySerializer,ApplicationSerializer,applicant_DocumentSerializer,candidate_EvaluationSerializer,Job_Discription_DocumentSerializer
+from ATS_api.models import User, User_Role,Role,Skill_Set, job_category,job_platforms,Company,applicant_cv,Experience,Education,Job,job_category,Application,Applicant_Document,candidate_Evaluation,Job_Description_Document
 
 class UserViewSet(viewsets.ModelViewSet):
    queryset = User.objects.all()
@@ -56,9 +56,9 @@ class job_categoryViewSet(viewsets.ModelViewSet):
    serializer_class = job_categorySerializer
 
 
-class CandidateViewSet(viewsets.ModelViewSet):
-   queryset = Candidate.objects.all()
-   serializer_class = CandidateSerializer
+class ApplicationViewSet(viewsets.ModelViewSet):
+   queryset = Application.objects.all()
+   serializer_class = ApplicationSerializer
    
 class Applicant_DocuemntViewSet(viewsets.ModelViewSet):
    queryset = Applicant_Document.objects.all()
