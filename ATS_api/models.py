@@ -142,7 +142,7 @@ class job_category(models.Model):
     
 class Application(models.Model):
     id = models.AutoField(primary_key=True)
-    date_of_application = models.DateTimeField(max_length=30)
+    date_of_application = models.DateTimeField(max_length=30,auto_now=True)
     job_id = models.ForeignKey(
         'job',
          on_delete=models.CASCADE,
