@@ -1,2 +1,2 @@
 release: python manage.py migrate
-web: gunicorn manage.py 
+web: gunicorn ATS_Pro.wsgi.py  
