@@ -37,7 +37,7 @@ class Role(models.Model):
         return self.task
 
 class Skill_Set(models.Model):
-    id = models.IntegerField(primary_key=True)
+    id = models.AutoField(primary_key=True)
     skill = models.CharField(max_length=1000)
     skill_level = models.CharField(max_length=30)
     applicant_cv_id = models.ForeignKey(
@@ -142,16 +142,16 @@ class job_category(models.Model):
     
 class Application(models.Model):
     id = models.AutoField(primary_key=True)
-    date_of_appliation = models.DateTimeField(max_length=30)
+    date_of_application = models.DateTimeField(max_length=30)
     job_id = models.ForeignKey(
         'job',
          on_delete=models.CASCADE,
          )
-    applicant_cv_id = models.ForeignKey(
-        'applicant_cv',
+    user_id = models.ForeignKey(
+        'User',
          on_delete=models.CASCADE,
          )
-    appliation_status = models.CharField(max_length=30) 
+    application_status = models.CharField(max_length=30) 
 
     def __str__(self):
         return self.task

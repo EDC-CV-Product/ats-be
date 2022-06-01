@@ -65,7 +65,7 @@ class job_categorySerializer(serializers.ModelSerializer):
 class ApplicationSerializer(serializers.ModelSerializer):
    class Meta:
        model = Application
-       fields = ('id', 'date_of_appliation','job_id','applicant_cv_id','appliation_status')
+       fields = ('id', 'date_of_application','job_id','user_id','application_status')
 
 class applicant_DocumentSerializer(serializers.ModelSerializer):
    class Meta:

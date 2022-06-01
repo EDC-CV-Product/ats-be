@@ -1,4 +1,0 @@
-git add.
-git commit -m "the message you want to put inside"
-git push
-// but you must be inside your local folder to be pushed into git hub
