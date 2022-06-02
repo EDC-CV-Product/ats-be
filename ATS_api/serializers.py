@@ -9,7 +9,7 @@ class UserSerializer(serializers.ModelSerializer):
 class User_RoleSerializer(serializers.ModelSerializer):
    class Meta:
        model = User_Role
-       fields = ('id', 'role_id', 'user_id')
+       fields = ('id', 'role', 'user')
 
 class RoleSerializer(serializers.ModelSerializer):
    class Meta:
@@ -64,17 +64,17 @@ class job_categorySerializer(serializers.ModelSerializer):
 class ApplicationSerializer(serializers.ModelSerializer):
    class Meta:
        model = Application
-       fields = ('id', 'date_of_application','job_id','user_id','application_status')
+       fields = ('id', 'date_of_application','job','user','application_status')
 
 class applicant_DocumentSerializer(serializers.ModelSerializer):
    class Meta:
        model = Applicant_Document
-       fields = ('id', 'name','document','url','last_updated','User_id')
+       fields = ('id', 'name','document','url','last_updated','user')
 
 class candidate_EvaluationSerializer(serializers.ModelSerializer):
    class Meta:
        model = candidate_Evaluation
-       fields = ('id', 'notes','recuiter_id','applicant_cv_id','evaluation_result')
+       fields = ('id', 'notes','recruiter','applicant_cv_id','evaluation_result')
 
 class Job_Discription_DocumentSerializer(serializers.ModelSerializer):
    class Meta:

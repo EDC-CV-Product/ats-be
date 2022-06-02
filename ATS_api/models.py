@@ -18,11 +18,11 @@ class User(models.Model):
 
 class User_Role(models.Model):
     id = models.AutoField(primary_key=True)
-    role_id = models.ForeignKey(
+    role = models.ForeignKey(
         'Role',
          on_delete=models.CASCADE,
          )
-    user_id = models.ForeignKey(
+    user = models.ForeignKey(
         'User',
          on_delete=models.CASCADE,
          )
@@ -38,7 +38,7 @@ class Skill_Set(models.Model):
     id = models.AutoField(primary_key=True)
     skill = models.CharField(max_length=1000)
     skill_level = models.CharField(max_length=30)
-    applicant_cv_id = models.ForeignKey(
+    applicant_cv = models.ForeignKey(
         'applicant_cv',
          on_delete=models.CASCADE,
          )
@@ -71,7 +71,7 @@ class applicant_cv(models.Model):
     phone=models.CharField(max_length=30)
     phone2=models.CharField(max_length=30,null=True)
     training_certification = models.CharField(max_length=100)
-    applicant_cv_id = models.ForeignKey(
+    applicant_cv = models.ForeignKey(
         'user',
          on_delete=models.CASCADE,
          )
@@ -83,7 +83,7 @@ class Experience(models.Model):
     title = models.CharField(max_length=30)
     begin_date = models.DateTimeField(max_length=30)
     end_date = models.DateTimeField(max_length=30)
-    applicant_cv_id = models.ForeignKey(
+    applicant_cv = models.ForeignKey(
         'skill_set',
          on_delete=models.CASCADE,
          )
@@ -94,7 +94,7 @@ class Education(models.Model):
     degree_obtained = models.CharField(max_length=30)
     date_attended_from= models.DateTimeField(max_length=30)
     date_attended_to = models.DateTimeField(max_length=30)
-    applicant_cv_id = models.ForeignKey(
+    applicant_cv = models.ForeignKey(
         'applicant_cv',
          on_delete=models.CASCADE,
          )
@@ -110,12 +110,12 @@ class Job(models.Model):
     #job_start_date = models.DateTimeField(max_length=30,null=True)
     job_deadline = models.DateTimeField()
     number_of_vacancies = models.IntegerField()
-    job_category_id = models.ForeignKey(
+    job_category = models.ForeignKey(
         'job_category',
          on_delete=models.CASCADE,
          )
     job_position = models.CharField(max_length=30)
-    job_platform_id = models.ForeignKey(
+    job_platform = models.ForeignKey(
         'job_platforms',
          on_delete=models.CASCADE,
          )
@@ -134,11 +134,11 @@ class job_category(models.Model):
 class Application(models.Model):
     id = models.AutoField(primary_key=True)
     date_of_application = models.DateTimeField(max_length=30,auto_now=True)
-    job_id = models.ForeignKey(
+    job = models.ForeignKey(
         'job',
          on_delete=models.CASCADE,
          )
-    user_id = models.ForeignKey(
+    user = models.ForeignKey(
         'User',
          on_delete=models.CASCADE,
          )
@@ -152,7 +152,7 @@ class Applicant_Document(models.Model):
     document= models.FileField()
     url = models.CharField(max_length=90,null=True)
     last_updated = models.DateTimeField(max_length=30)
-    User_id  = models.ForeignKey(
+    user  = models.ForeignKey(
         'User',
          on_delete=models.CASCADE,
          )
@@ -161,11 +161,11 @@ class Applicant_Document(models.Model):
 class candidate_Evaluation(models.Model):
     id = models.AutoField(primary_key=True)
     notes= models.CharField(max_length=1000)
-    recuiter_id  = models.ForeignKey(
+    recruiter  = models.ForeignKey(
         'User',
          on_delete=models.CASCADE,
          )
-    applicant_cv_id  = models.ForeignKey(
+    applicant_cv  = models.ForeignKey(
         'applicant_cv',
          on_delete=models.CASCADE,
          )
@@ -178,7 +178,7 @@ class Job_Description_Document(models.Model):
     name = models.CharField(max_length=30)
     document= models.BinaryField(max_length=100)
     last_updated = models.DateTimeField(max_length=30)
-    job_id  = models.ForeignKey(
+    job  = models.ForeignKey(
         'job',
          on_delete=models.CASCADE,
          )
