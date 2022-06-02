@@ -11,14 +11,11 @@ from ATS_api.serializers import UserSerializer, User_RoleSerializer,RoleSerializ
 from ATS_api.models import User, User_Role,Role,Skill_Set, job_category,job_platforms,Company,applicant_cv,Experience,Education,Job,job_category,Application,Applicant_Document,candidate_Evaluation,Job_Description_Document
 
 # for email View
-from .models import User
-from .serializers import UserSerializer
+import django_filters.rest_framework
+from django.contrib.auth.models import User
+from ATS_api.serializers import UserSerializer
 from rest_framework import generics
-from rest_framework.filters import SearchFilter
-from rest_framework import filters
 from django_filters.rest_framework import DjangoFilterBackend
-
-
 
 class UserViewSet(viewsets.ModelViewSet):
    queryset = User.objects.all()
@@ -88,17 +85,8 @@ class Job_Discription_DocumentViewSet(viewsets.ModelViewSet):
    serializer_class = Job_Discription_DocumentSerializer
 
 # To Filter Using Email Address    
-"""class UserListView(generics.ListAPIView):
+class ProductList(generics.ListAPIView):
     queryset = User.objects.all()
     serializer_class = UserSerializer
-    filter_backends = (DjangoFilterBackend)
-    filter_backends = [filters.SearchFilter]
-    search_fields = ['=id','=email']"""
-
-"""class EmailViewSet(generics.ListAPIView):
-    queryset = User.objects.all()
-    Serializer_class = UserSerializer
-    filter_backends = [DjangoFilterBackend, SearchFilter]
-    filter_fields = ['id', 'first_name']
-    search_fields=['id','first_name']"""
-
+    filter_backends = [DjangoFilterBackend]
+    filterset_fields = ['email', 'first_name']
