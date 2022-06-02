@@ -163,6 +163,11 @@ django_heroku.settings(locals())
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
+MEDIA_URL = 'applicant-file/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'CV_ROOT/')
+
+
+
 REST_FRAMEWORK = {
     'DEFAULT_FILTER_BACKENDS': [
     'django_filters.rest_framework.DjangoFilterBackend',

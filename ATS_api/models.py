@@ -26,15 +26,13 @@ class User_Role(models.Model):
         'User',
          on_delete=models.CASCADE,
          )
-    def __str__(self):
-        return self.task
+
 
 class Role(models.Model):
     id = models.IntegerField(primary_key=True)
     name= models.CharField(max_length=30)
 
-    def __str__(self):
-        return self.task
+
 
 class Skill_Set(models.Model):
     id = models.AutoField(primary_key=True)
@@ -44,8 +42,7 @@ class Skill_Set(models.Model):
         'applicant_cv',
          on_delete=models.CASCADE,
          )
-    def __str__(self):
-        return self.task
+ 
 
 class job_platforms(models.Model):
     id = models.AutoField(primary_key=True)
@@ -59,8 +56,7 @@ class Company(models.Model):
     code = models.CharField(max_length=30)
     name = models.CharField(max_length=30)
     description = models.CharField(max_length=1000,null=True)
-    def __str__(self):
-        return self.task
+  
 
    
 class applicant_cv(models.Model):
@@ -79,8 +75,7 @@ class applicant_cv(models.Model):
         'user',
          on_delete=models.CASCADE,
          )
-    def __str__(self):
-        return self.task
+
 
 class Experience(models.Model):
     id = models.AutoField(primary_key=True)
@@ -92,8 +87,6 @@ class Experience(models.Model):
         'skill_set',
          on_delete=models.CASCADE,
          )
-    def __str__(self):
-        return self.task
 
 class Education(models.Model):
     id = models.AutoField(primary_key=True)
@@ -105,8 +98,7 @@ class Education(models.Model):
         'applicant_cv',
          on_delete=models.CASCADE,
          )
-    def __str__(self):
-        return self.task
+
     
 
 class Job(models.Model):
@@ -129,8 +121,7 @@ class Job(models.Model):
          )
     organization_name = models.CharField(max_length=50,default='',null=True)
     file=models.FileField()
-    def __str__(self):
-        return self.task
+ 
   
    
 class job_category(models.Model):
@@ -153,8 +144,7 @@ class Application(models.Model):
          )
     application_status = models.CharField(max_length=30) 
 
-    def __str__(self):
-        return self.task
+
 
 class Applicant_Document(models.Model):
     id = models.AutoField(primary_key=True)
@@ -181,9 +171,7 @@ class candidate_Evaluation(models.Model):
          )
     evaluation_result = models.IntegerField(unique=True)
 
-    def __str__(self):
-        return self.task
-
+ 
 
 class Job_Description_Document(models.Model):
     id = models.AutoField(primary_key=True)
@@ -195,6 +183,4 @@ class Job_Description_Document(models.Model):
          on_delete=models.CASCADE,
          )
 
-    def __str__(self):
-        return self.task
 
