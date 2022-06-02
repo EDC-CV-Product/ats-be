@@ -104,13 +104,14 @@ WSGI_APPLICATION = 'ATS_Pro.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'd2ik7o2dfvtdhs',
-        'USER': 'rxssusnbimaxoy',
-        'PASSWORD': '9375d292a4a1d691fc09e6e10e8ede8e1defdaca26c92ccee5e1993e40988dc8',
-        'HOST': 'ec2-44-194-4-127.compute-1.amazonaws.com',
+        'NAME': 'da2t5lqa0tg03k',
+        'USER': 'pbjzffanyoozhu',
+        'PASSWORD': 'f01ed18a2a1a9b91e660c100695ab88a4b95d3c8464944cff16e808bce83d7ec',
+        'HOST': 'ec2-44-196-174-238.compute-1.amazonaws.com',
         'PORT': '5432',
           }
 }
+
 
 
 
