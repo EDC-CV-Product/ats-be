@@ -33,7 +33,6 @@ class Role(models.Model):
     name= models.CharField(max_length=30)
 
 
-
 class Skill_Set(models.Model):
     id = models.AutoField(primary_key=True)
     skill = models.CharField(max_length=1000)
