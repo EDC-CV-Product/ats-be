@@ -166,7 +166,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 MEDIA_URL = 'applicant-file/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'CV_ROOT/')
-
+X_FRAME_OPTIONS = 'ALLOWALL'
 
 
 REST_FRAMEWORK = {

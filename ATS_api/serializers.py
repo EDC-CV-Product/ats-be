@@ -74,7 +74,7 @@ class applicant_DocumentSerializer(serializers.ModelSerializer):
 class candidate_EvaluationSerializer(serializers.ModelSerializer):
    class Meta:
        model = candidate_Evaluation
-       fields = ('id', 'notes','recruiter','applicant_cv','evaluation_result')
+       fields = ('id', 'evaluation_notes','job','applicant','evaluation_result')
 
 class Job_Discription_DocumentSerializer(serializers.ModelSerializer):
    class Meta:

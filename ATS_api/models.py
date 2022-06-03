@@ -159,16 +159,16 @@ class Applicant_Document(models.Model):
  
 class candidate_Evaluation(models.Model):
     id = models.AutoField(primary_key=True)
-    notes= models.CharField(max_length=1000)
-    recruiter  = models.ForeignKey(
-        'User',
+    evaluation_notes = models.CharField(max_length=1000, null=True)
+    job = models.ForeignKey(
+        'job',
          on_delete=models.CASCADE,
          )
-    applicant_cv  = models.ForeignKey(
-        'applicant_cv',
+    applicant = models.ForeignKey(
+        'user',
          on_delete=models.CASCADE,
          )
-    evaluation_result = models.IntegerField(unique=True)
+    evaluation_result = models.IntegerField()
 
  
 
